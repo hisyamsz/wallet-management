@@ -10,9 +10,9 @@ const Navbar = () => {
       <h1 className="text-md text-gray-500 font-normal">Welcome back!</h1>
       <button onClick={setIsOpen} className="lg:hidden" title="Sidebar">
         {isOpen ? (
-          <BsLayoutSidebarInset size={20} className="text-indigo-600 hover:text-indigo-400" />
+          <BsLayoutSidebarInset size={20} className="text-slate-600 hover:text-slate-400" />
         ) : (
-          <BsLayoutSidebar size={20} className="text-indigo-600 hover:text-indigo-400" />
+          <BsLayoutSidebar size={20} className="text-slate-600 hover:text-slate-400" />
         )}
       </button>
     </nav>

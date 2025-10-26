@@ -1,6 +1,6 @@
 import * as React from "react";
-import Button from "../ui/Button";
 import { FaPlus } from "react-icons/fa6";
+import { Button } from "../ui/Button";
 
 interface HeaderProps {
   buttonShow?: boolean;
@@ -8,7 +8,7 @@ interface HeaderProps {
   title: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ title, buttonShow = false, description }) => {
+const Header: React.FC<HeaderProps> = ({ title, buttonShow, description }) => {
   return (
     <header className="flex justify-between items-center">
       <div className="space-y-6">
