@@ -3,16 +3,18 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { CiWallet } from "react-icons/ci";
 import Button from "../ui/Button";
 import { SidebarList } from "../../constants/sidebar.constants";
+import { useNavOpen } from "../../store/useNavbarOpen";
 
 const Sidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location.pathname);
+  const isOpen = useNavOpen((state) => state.isOpen);
 
   return (
     <div
       className={cn(
-        "fixed z-50 flex h-screen w-full max-w-[300px] -translate-x-full flex-col justify-between border-r border-gray-200 bg-white px-4 py-6 transition-all lg:relative lg:translate-x-0",
+        "fixed flex h-screen w-full max-w-[300px] -translate-x-full flex-col justify-between border-r border-gray-200 bg-white px-4 py-6 transition-all lg:relative lg:translate-x-0",
+        { "translate-x-0": isOpen },
       )}
     >
       <div>
