@@ -1,8 +1,8 @@
-export interface Transaction {
+export interface ITransaction {
   id: string;
   date: string;
   category: string;
   type: string;
   description: string;
-  amount: string | number;
+  amount: number;
 }

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { FaPlus } from "react-icons/fa6";
 import { Button } from "../ui/Button";
+import { useToggleDialog } from "@/store/useToggleDialog";
 
 interface HeaderProps {
   buttonShow?: boolean;
@@ -9,6 +10,8 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ title, buttonShow, description }) => {
+  const setIsOpen = useToggleDialog((state) => state.setIsOpen);
+
   return (
     <header className="flex justify-between items-center">
       <div className="space-y-6">
@@ -16,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ title, buttonShow, description }) => {
         <p className="text-lg text-gray-500">{description}</p>
       </div>
       {buttonShow && (
-        <Button className="gap-2">
+        <Button onClick={() => setIsOpen(true)} className="px-6">
           <FaPlus /> Add Transaction
         </Button>
       )}
