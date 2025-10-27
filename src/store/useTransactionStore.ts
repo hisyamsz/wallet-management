@@ -1,5 +1,6 @@
 import type { ITransaction } from "@/types/Transaction";
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 import { v4 as uuid } from "uuid";
 
 type TransactionStore = {
@@ -9,18 +10,31 @@ type TransactionStore = {
   editTransaction: (t: ITransaction) => void;
 };
 
-export const useTransactionStore = create<TransactionStore>((set) => ({
-  transactions: [],
-  addTransaction: (t) =>
-    set((state) => ({
-      transactions: [...state.transactions, { id: uuid(), ...t }],
-    })),
-  deleteTransaction: (id) =>
-    set((state) => ({
-      transactions: state.transactions.filter((tr) => tr.id !== id),
-    })),
-  editTransaction: (t) =>
-    set((state) => ({
-      transactions: state.transactions.map((tr) => (tr.id === t.id ? t : tr)),
-    })),
-}));
+export const useTransactionStore = create<TransactionStore>()(
+  persist(
+    (set) => ({
+      transactions: [],
+
+      addTransaction: (transaction) =>
+        set((state) => ({
+          transactions: [...state.transactions, { id: uuid(), ...transaction }],
+        })),
+
+      deleteTransaction: (id) =>
+        set((state) => ({
+          transactions: state.transactions.filter((tr) => tr.id !== id),
+        })),
+
+      editTransaction: (updatedTransaction) =>
+        set((state) => ({
+          transactions: state.transactions.map((tr) => (tr.id === updatedTransaction.id ? updatedTransaction : tr)),
+        })),
+
+      clearTransactions: () => set({ transactions: [] }),
+    }),
+    {
+      name: "transaction-storage",
+      partialize: (state) => ({ transactions: state.transactions }),
+    },
+  ),
+);
