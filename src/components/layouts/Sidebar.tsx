@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { CiWallet } from "react-icons/ci";
 import { useNavOpen } from "../../store/useNavbarOpen";
 import { Button } from "../ui/Button";
-import { SidebarList } from "@/constants/sidebar.constants";
+import { SidebarList } from "@/constants/Sidebar.constants";
 
 const Sidebar = () => {
   const navigate = useNavigate();
