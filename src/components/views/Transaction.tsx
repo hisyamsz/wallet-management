@@ -10,11 +10,7 @@ import { FcBearish, FcBullish } from "react-icons/fc";
 import { convertIDR } from "@/utils/currency";
 import { CiTrash } from "react-icons/ci";
 
-interface TransactionProps {
-  title?: string;
-}
-
-const Transaction: React.FC<TransactionProps> = () => {
+const Transaction: React.FC = () => {
   const transaction = useTransactionStore((state) => state.transactions);
   const addTransaction = useTransactionStore((state) => state.addTransaction);
   const deleteTransaction = useTransactionStore((state) => state.deleteTransaction);

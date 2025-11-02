@@ -14,7 +14,6 @@ import { Label } from "../ui/label";
 import { useToggleDialog } from "@/store/useToggleDialog";
 
 interface TransactionModalProps {
-  dialogTrigger?: string;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 

@@ -7,11 +7,7 @@ import { Button } from "../ui/Button";
 import { useBalanceStore } from "@/store/useBalanceStore";
 import { convertIDR } from "@/utils/currency";
 
-interface SettingProps {
-  propName?: string;
-}
-
-const Setting: React.FC<SettingProps> = () => {
+const Setting: React.FC = () => {
   const [tempBalance, setTempBalance] = React.useState<string>("");
   const balance = useBalanceStore((state) => state.balance);
   const setBalance = useBalanceStore((state) => state.setBalance);
